@@ -67,7 +67,38 @@ Nama | Default | Type | Deskripsi
 `context` | `NULL` | **STRING** | Data tambahan, dapat digunakan sebagai penanda sesi pemeriksaan. Server akan selalu mengirim kembali data pada parameter `context` di dalam setiap response, baik `hooking` atau `response` hasil pemeriksaan. Misal anda menentukan `context` dengan **data_saya** maka server akan mengirim selalu **data_saya** dalam setiap `response`.
 
 ## Catatan Penting Web-Hook
-Apa itu **web-hook** ? **Web-Hook** adalah metode panggilan balik dari server ke pemanggil (user), dimana server
+Apa itu **web-hook** ? **Web-Hook** adalah metode panggilan balik dari server ke pemanggil (user), dimana server akan mengirim informasi secara interval ke URL yang ditentukan. Informasi tersebut bisa jadi berisikan progress pemeriksaan atau penawaran dari server, seperti pembatalan proses dan lainnya. **Web-Hook** mirip seperti notifikasi secara real.
 
-1. Waktu interval `hook_works` dan `hook_stop` adalah 5 detik sekali.
-2. Jika 
+* Waktu interval `hook_works` dan `hook_stop` adalah **5 detik** sekali.
+* Jika salah satu **hook service** merespon dengan status **500** (`Internal Server Error`) atau **404** (`Not Found`) maka server akan mengehentikan semua panggilan hook.
+* Server akan memberi waktu selama 10 detik bagi **hook service** untuk memberikan respon, jika dalam **10 detik** tidak ada respon, maka server akan menganggap **hooking** tersebut `timeout` dan akan menghentikan **hooking** selanjutnya
+
+## Catatan Penting Upload Dokumen
+
+* User dapat menginstruksikan server untuk **mendownload** dokumen yang akan diperiksa dari alamat URL atau **membaca** dokumen yang akan diperiksa langsung dari parameter yang diunggah ke server.
+* Jika user menginstruksikan untuk mendowload saja, maka tentukan `file_url` dengan link ke alamat file yang akan diperiksa
+* Jika `file_url` berisikan halaman sebuah situs (bukan file PDF atau WORD), maka server **akan menganggap** bahwa user meminta untuk memeriksa plagiarisme halaman tersebut.
+* Namun jika user menginstruksikan server untuk membuka dokumen dari dalam parameter secara langsung, maka isikan `file_raw` dengan `BASE-64` string yang berisikan dokumen file yang akan diperiksa
+
+> Maksimum ukuran file adalah 10 MB, baik yang akan di download via `file_url` atau dokumen yang disisipkan via `file_raw` parameter
+
+* Format dokumen file yang disupport oleh [UniqueBrain](https://ubchecker.com) adalah sebagai berikut:
+  * **.pdf**
+  * **.doc**
+  * **.docx**
+  * **.epub**
+  * **.html**
+  * **.mht**
+  * **.odt**
+  * **.rtf**
+  * **.txt**
+* File dengan file diluar format diatas akan mengakibatkan validasi error
+
+## Route Pemeriksaan Online
+
+* Akses menuju server di alamat berikut: http://online.ubchecker.com/api/scan
+* Pastikan dalam setiap request anda mengisi **Authorization** di header dengan metode **BEARER**, hubungi developer untuk mendapatkan **API-TOKEN** tersebut
+* Alternatifnya, anda dapat mengisi **API-TOKEN** via query-string, misalnya: http://online.ubchecker.com/api/scan?token=65E94086-7617-4383-866C-C1A50A493656
+
+
+_Dibuat oleh Rizky pada tanggal 20 November 2019_
