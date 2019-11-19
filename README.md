@@ -64,4 +64,10 @@ Nama | Default | Type | Deskripsi
 `year` | - | **INT** | Tahun dimana dokumen yang diperiksa dipublikasikan, **tidak boleh** `NULL`
 `file_url` | `NULL` | **URL** | URL dimana dokumen file yang akan diperiksa dapat di-download oleh server, sehingg anda tidak perlu mengikutsertakan dokumen file dalam format `BASE-64` kedalam JSON parameter ini. **Catatan**: **Jika** `file_raw` **tidak NULL maka** `file_url` **akan diabaikan (ignored)**
 `file_raw` | `NULL` | **BASE-64** | Raw data dari dokumen file yang akan diperiksa oleh server. Jika `NULL` maka server akan menggunakan `file_url`. Jika kedua-duanya `NULL` server akan mengembalikan status `Error 400`. **Penting**: Ukuran maksimal file yang dapat diperiksa oleh server adalah **10 MB** !
+`context` | `NULL` | **STRING** | Data tambahan, dapat digunakan sebagai penanda sesi pemeriksaan. Server akan selalu mengirim kembali data pada parameter `context` di dalam setiap response, baik `hooking` atau `response` hasil pemeriksaan. Misal anda menentukan `context` dengan **data_saya** maka server akan mengirim selalu **data_saya** dalam setiap `response`.
 
+## Catatan Penting Web-Hook
+Apa itu **web-hook** ? **Web-Hook** adalah metode panggilan balik dari server ke pemanggil (user), dimana server
+
+1. Waktu interval `hook_works` dan `hook_stop` adalah 5 detik sekali.
+2. Jika 
