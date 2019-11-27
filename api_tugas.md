@@ -57,7 +57,7 @@ Berikut adalah penjelasan dari parameter diatas:
 
 ### Output Pemeriksaan
 
-**UniqueBrain** akan merespon request pemeriksaan dengan konten berformat `JSON` sebagai berikut:
+> **UniqueBrain** akan merespon request pemeriksaan dengan konten berformat `JSON` sebagai berikut:
 
 #### Response ketika pemeriksaan selesai
 
@@ -105,7 +105,6 @@ Berikut adalah penjelasan dari parameter diatas:
                       "kalimat_relasi": "Aku mengajarkan cara pembautan nasi bungkus",
                       "besar_plagiat": 93.2
                    }
-                   //, dan seterusnya
                 ]
             },
             {
@@ -126,13 +125,11 @@ Berikut adalah penjelasan dari parameter diatas:
                       "kalimat_saya": "Saya mengajarkan cara pembuatan nasi bungkus",
                       "kalimat_relasi": "Aku mengajarkan cara pembuatan bungkus nasi",
                       "besar_plagiat": 85.2
-                   }
-                   //, dan seterusnya
+                   }                   
                 ]
             }
          ]
-      }
-      // , informasi plagiat per-orang seterusnya...      
+      }      
    ]
 }
 ```
