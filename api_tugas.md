@@ -1,13 +1,13 @@
 # UniqueBrain - Format Input/Output Tugas
 
+> Fitur ini adalah berupa pemeriksaan dalam folder host, dimana **UniqueBrain** server akan mendownload semua file berformat **pdf** dari sebuah folder yang dipublish via **FTP**
+
 | Jenis | Link |
 | ----- | ---- |
 | Request | [Disini](#input-pemeriksaan) |
 | Response | [Disini](#output-pemeriksaan) |
 
 ### Input Pemeriksaan
-
-* Metode ini adalah berupa pemeriksaan dalam folder host, dimana **UniqueBrain** server akan mendownload semua file berformat **pdf** dari sebuah folder yang dipublish via **FTP**, berikut adalah input parameter yang **valid**:
 
 ```json
 {
@@ -50,6 +50,10 @@ Berikut adalah penjelasan dari parameter diatas:
 3. Misalkan nama relative folder adalah `/unjani/file_gue` maka **UniqueBrain** akan membaca sebagai `/home/{USER}/public_html/unjani/file_gue`
 4. Struktur file yang akan diperiksa oleh **UniqueBrain** harus berformat sebagai berikut:
 `[{NIM/Kelompok}] {nama_file}.pdf` misalnya: `[Kelompok 2] Tugas.pdf`
+
+
+---
+---
 
 ### Output Pemeriksaan
 
