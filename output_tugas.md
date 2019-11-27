@@ -15,8 +15,8 @@
    "folder" : "/unjani/.../folder/periksa",
    "report":
    {
-      "logo_kiri": "PNG|JPG|URL|NULL",
-      "logo_kanan": "PNG|JPG|URL|NULL",
+      "logo_kiri": "PNG|URL|NULL",
+      "logo_kanan": "PNG|URL|NULL",
       "upload_html": "/unjani/../folder/hasil/index.html",
       "upload_pdf": "/unjani/../folder/hasil/hasil.pdf"
    }
@@ -32,7 +32,17 @@ Berikut adalah penjelasan dari parameter diatas:
 | `judul` | `NOT NULL` | **STRING** | Nama judul tugas yang dibuat oleh dosen |
 | `threshold` | **0.75** | **DOUBLE** | Threshold kesamaan kalimat hingga diduga sebagai plagiarisme, angka dari **0.01** hingga **1.0** |
 | `min_match` | **2** | **DOUBLE** | Persentase (%) minimal kesamaan antara dokumen tugas hingga dokumen tersebut diduga plagiat, angka dari **0.1** hingga **100** |
-| `folder` | `NOT NULL` | **STRING** | Lokasi relative folder di dalam hosting, dimana semua file berformat **PDF** akan diperiksa. **PENTING**: 
-1. Nama folder tidak boleh diawali dengan **public_html** karena **UniqueBrain** akan secara default menggunakan folder **public_html** sebagai **root** dari semua folder
-2. Nama folder harus diawali dengan tanda backslash `/`
-Misalkan nama relative folder adalah `/unjani/file_gue` maka **UniqueBrain** akan membaca sebagai `/home/{USER}/public_html/unjani/file_gue`|
+| `folder` | `NOT NULL` | **STRING** | Lokasi relative folder di dalam hosting, dimana semua file berformat **PDF** akan diperiksa. |
+| `report` | `NULL` | **OBJECT** | Berisikan parameter pembuatan laporan pemeriksaan plagiat tugas |
+| `report.logo_kiri` | `NULL` | **BASE-64|URL** | Disikan dengan alamat `URL` atau `BASE-64` string dari file **PNG** yang dimana akan dijadikan sebagai logo header sebelah **KIRI ATAS**, jika `NULL` maka akan menggunakan header default |
+| `report.logo_kanan` | `NULL` | **BASE-64|URL** | Disikan dengan alamat `URL` atau `BASE-64` string dari file **PNG** yang dimana akan dijadikan sebagai logo header sebelah **KANAN ATAS**, jika `NULL` maka akan menggunakan header default |
+| `report.upload_html` | `NULL` | **STRING** | Alamat relatif folder di-dalam hosting dimana **UniqueBrain** server akan mengupload laporan pemeriksaan dalam folder **HTML** ke folder tersebut |
+| `report.upload_html` | `NULL` | **STRING** | Alamat relatif folder di-dalam hosting dimana **UniqueBrain** server akan mengupload laporan pemeriksaan dalam folder **PDF** ke folder tersebut |
+
+**PENTING** !! 
+1. `folder` tidak boleh diawali dengan **public_html** karena **UniqueBrain** akan secara default menggunakan folder **public_html** sebagai **root** dari semua folder
+2. `folder` harus diawali dengan tanda backslash `/`
+3. Misalkan nama relative folder adalah `/unjani/file_gue` maka **UniqueBrain** akan membaca sebagai `/home/{USER}/public_html/unjani/file_gue`
+4. Struktur file yang akan diperiksa oleh **UniqueBrain** harus berformat sebagai berikut:
+`[{NIM/Kelompok}] {nama_file}.pdf` misalnya: `[Kelompok 2] Tugas.pdf`
+
