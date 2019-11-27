@@ -142,15 +142,39 @@ Keterangan dan deskripsi dari `property` di dalam struktur `JSON` diatas:
 | `banyak_dokumen_terduga` | `-` | **INTEGER** | Jumlah akumulasi dari semua dokumen yang terduga plagiat |
 | `url_laporan_html` | `NULL` | **URL** | Alamat URL lengkap dimana **UniqueBrain** mengupload laporan pemeriksaan tugas ini dan dapat dilihat secara online dalam format **HTML**. Jika parameter `report.upload_html` berupa `NULL` maka `url_laporan_html` akan `NULL` dan tidak ada laporan yang diunggah |
 | `url_laporan_pdf` | `NULL` | **URL** | Alamat URL lengkap dimana **UniqueBrain** mengupload laporan pemeriksaan tugas ini dan dapat dilihat secara online dalam format **PDF**. Jika parameter `report.upload_pdf` berupa `NULL` maka `url_laporan_pdf` akan `NULL` dan tidak ada laporan yang diunggah |
-| `detail_pemeriksaan` | *maybe* | **ARRAY** | Berisikan detail hasil pemeriksaan, lengkap dengan kesamaan kalimat dan kesamaan diatara dokumen. Jika **TIDAK ADA PLAGIARISME** maka `detail_pemeriksaan` akan `NULL`. |
+| `detail_pemeriksaan` | `NOT NULL` | **ARRAY** | Array dari hasil pemeriksaan tiap [dokumen](#informasi-plagiarisme-dokumen)  |
 
 ### Informasi Plagiarisme Dokumen
 
-(Link)(###informasi-plagiarisme-dokumen)
+| Property | Type | Deskripsi |
+| -------- | ---- | --------- |
+| `nama_pemilik_dokumen` | **STRING** | Nama kelompok atau NIM dari pemilik dokumen yang terduga plagiat |
+| `skor_plagiarisme_max` | **DOUBLE** | Nilai persentase plagiat tertinggi dari dokumen ini terhadap dokumen lain |
+| `skor_plagiarisme_min` | **DOUBLE** | Nilai persentase plagiat terendah dari dokumen ini terhadap dokumen lain |
+| `jumlah_kalimat_terduga` | **INTEGER** | Jumlah kalimat milik dokumen ini yang diduga plagiat dengan dokumen lain |
+| `jumlah_kalimat_keseluruhan` | **INTEGER** | Jumlah kalimat yang ada di dalam dokumen ini yang sudah diperiksa |
+| `detail_relasi_plagiarisme` | **ARRAY** | Array dari `object` [relasi](#informasi-plagiarisme-relasi) |
 
- "nama_pemilik_dokumen": "Tn. Andri",
-         "skor_plagiarisme_maks": 25.5,
-         "skor_plagiarisme_min": 7.2,
-         "jumlah_kalimat_terduga": 13,
-         "jumlah_kalimat_keseluruhan": 123,
-         "memiliki_relasi_sebanyak": 3,
+### Informasi Plagiarisme Relasi
+
+| Property | Type | Deskripsi |
+| -------- | ---- | --------- |
+| `relasi_dengan` | **STRING** | Nama kelompok atau NIM dari pemilik dokumen yang menjadi **target** kesamaan dengan dokumen yang diduga [plagiat](#informasi-plagiarisme-dokumen) |
+| `besar_plagiat` | **DOUBLE** | Nilai persentase dugaan plagiarisme antara dokumen [sumber](#informasi-plagiarisme-dokumen) dengan dokumen **target** ini |
+| `jumlah_dugaan` | **INTEGER** | Banyak kalimat yang diduga plagiat antara dokumen [sumber](#informasi-plagiarisme-dokumen) dengan dokumen **target** ini |
+| `rata_rata_kesamaan` | **DOUBLE** | Rata rata kesamaan plagiarisme setiap kalimat, dalam persentase |
+| `detail_kesamaan_kalimat` | **ARRAY** | Array dari `object` [kalimat](#informasi-plagiarisme-kalimat) |
+
+### Informasi Plagiarisme Kalimat
+
+| Property | Type | Deskripsi |
+| -------- | ---- | --------- |
+| `nomor_urutan` | **INTEGER** | Nomor urutan kesamaan kalimat ini |
+| `kalimat_saya` | **STRING** | Kalimat yang terdapat di dokumen saya |
+| `kalimat_relasi` | **STRING** | Kalimat yang terdapat di dokumen lawan |
+| `besar_plagiat` | **DOUBLE** | Persentase kesamaan plagiat antara `kalimat_saya` dengan `kalimat_relasi` |
+
+
+
+Created by **Rizky**
+*28 November 2019*
