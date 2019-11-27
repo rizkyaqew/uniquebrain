@@ -34,8 +34,8 @@ Berikut adalah penjelasan dari parameter diatas:
 | `min_match` | **2** | **DOUBLE** | Persentase (%) minimal kesamaan antara dokumen tugas hingga dokumen tersebut diduga plagiat, angka dari **0.1** hingga **100** |
 | `folder` | `NOT NULL` | **STRING** | Lokasi relative folder di dalam hosting, dimana semua file berformat **PDF** akan diperiksa. |
 | `report` | `NULL` | **OBJECT** | Berisikan parameter pembuatan laporan pemeriksaan plagiat tugas |
-| `report.logo_kiri` | `NULL` | **BASE-64|URL** | Disikan dengan alamat `URL` atau `BASE-64` string dari file **PNG** yang dimana akan dijadikan sebagai logo header sebelah **KIRI ATAS**, jika `NULL` maka akan menggunakan header default |
-| `report.logo_kanan` | `NULL` | **BASE-64|URL** | Disikan dengan alamat `URL` atau `BASE-64` string dari file **PNG** yang dimana akan dijadikan sebagai logo header sebelah **KANAN ATAS**, jika `NULL` maka akan menggunakan header default |
+| `report.logo_kiri` | `NULL` | **STRING** | Disikan dengan alamat `URL` atau `BASE-64` string dari file **PNG** yang dimana akan dijadikan sebagai logo header sebelah **KIRI ATAS**, jika `NULL` maka akan menggunakan header default |
+| `report.logo_kanan` | `NULL` | **STRING** | Disikan dengan alamat `URL` atau `BASE-64` string dari file **PNG** yang dimana akan dijadikan sebagai logo header sebelah **KANAN ATAS**, jika `NULL` maka akan menggunakan header default |
 | `report.upload_html` | `NULL` | **STRING** | Alamat relatif folder di-dalam hosting dimana **UniqueBrain** server akan mengupload laporan pemeriksaan dalam folder **HTML** ke folder tersebut |
 | `report.upload_html` | `NULL` | **STRING** | Alamat relatif folder di-dalam hosting dimana **UniqueBrain** server akan mengupload laporan pemeriksaan dalam folder **PDF** ke folder tersebut |
 
