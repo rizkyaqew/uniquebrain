@@ -1,4 +1,9 @@
-#UniqueBrain - Format Input/Output Tugas
+# UniqueBrain - Format Input/Output Tugas
+
+| Jenis | Link |
+| ----- | ---- |
+| Request | [Disini](#input-pemeriksaan) |
+| Response | [Disini](#output-pemeriksaan) |
 
 ### Input Pemeriksaan
 
@@ -170,8 +175,8 @@ Keterangan dan deskripsi dari `property` di dalam struktur `JSON` diatas:
 | Property | Type | Deskripsi |
 | -------- | ---- | --------- |
 | `nomor_urutan` | **INTEGER** | Nomor urutan kesamaan kalimat ini |
-| `kalimat_saya` | **STRING** | Kalimat yang terdapat di dokumen saya |
-| `kalimat_relasi` | **STRING** | Kalimat yang terdapat di dokumen lawan |
+| `kalimat_saya` | **STRING** | Kalimat yang terdapat di dokumen [saya](#informasi-plagiarisme-dokumen) |
+| `kalimat_relasi` | **STRING** | Kalimat yang terdapat di dokumen [lawan](#informasi-plagiarisme-relasi) |
 | `besar_plagiat` | **DOUBLE** | Persentase kesamaan plagiat antara `kalimat_saya` dengan `kalimat_relasi` |
 
 
