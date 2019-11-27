@@ -31,13 +31,13 @@ Berikut adalah penjelasan dari parameter diatas:
 
 | Parameter | Default | Type | Deskripsi |
 | --------- | --------| ---- | --------- |
-| `id` | `NOT NULL` | **STRING** | Identitas (ID) tugas yang akan diperiksa, harus unik |
-| `dosen` | `NOT NULL` | **STRING** | Nama dosen yang akan diperiksa |
-| `email` | `NULL` | **STRING** | Alamat email dosen dimana laporan pemeriksaan akan dikirim, jika `NULL` maka tidak akan dikirim |
-| `judul` | `NOT NULL` | **STRING** | Nama judul tugas yang dibuat oleh dosen |
+| `id` | `-` | **STRING** | Identitas (ID) tugas yang akan diperiksa, harus unik |
+| `dosen` | `-` | **STRING** | Nama dosen yang akan diperiksa |
+| `email` | `-` | **STRING** | Alamat email dosen dimana laporan pemeriksaan akan dikirim, jika `NULL` maka tidak akan dikirim |
+| `judul` | `-` | **STRING** | Nama judul tugas yang dibuat oleh dosen |
 | `threshold` | **0.75** | **DOUBLE** | Threshold kesamaan kalimat hingga diduga sebagai plagiarisme, angka dari **0.01** hingga **1.0** |
 | `min_match` | **2** | **DOUBLE** | Persentase (%) minimal kesamaan antara dokumen tugas hingga dokumen tersebut diduga plagiat, angka dari **0.1** hingga **100** |
-| `folder` | `NOT NULL` | **STRING** | Lokasi relative folder di dalam hosting, dimana semua file berformat **PDF** akan diperiksa. |
+| `folder` | `-` | **STRING** | Lokasi relative folder di dalam hosting, dimana semua file berformat **PDF** akan diperiksa. |
 | `report` | `NULL` | **OBJECT** | Berisikan parameter pembuatan laporan pemeriksaan plagiat tugas |
 | `report.logo_kiri` | `NULL` | **STRING** | Disikan dengan alamat `URL` atau `BASE-64` string dari file **PNG** yang dimana akan dijadikan sebagai logo header sebelah **KIRI ATAS**, jika `NULL` maka akan menggunakan header default |
 | `report.logo_kanan` | `NULL` | **STRING** | Disikan dengan alamat `URL` atau `BASE-64` string dari file **PNG** yang dimana akan dijadikan sebagai logo header sebelah **KANAN ATAS**, jika `NULL` maka akan menggunakan header default |
@@ -138,9 +138,9 @@ Keterangan dan deskripsi dari `property` di dalam struktur `JSON` diatas:
 
 | Property | Null | Type | Keterangan |
 | -------- | ------- | ---- | ---------- |
-| `id` | `-` | **STRING** | Sama dengan properti `id` yang dikirimkan saat request pemeriksaan tugas |
-| `judul_tugas` | `-` | **STRING** | Sama dengan properti `judul` yang dikirimkan saat request pemeriksaan tugas |
-| `nama_dosen` | `-` | **STRING** | Sama dengan properti `doseon` yang dikirimkan saat request pemeriksaan tugas |
+| `id` | `-` | **STRING** | Sama dengan properti `id` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
+| `judul_tugas` | `-` | **STRING** | Sama dengan properti `judul` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
+| `nama_dosen` | `-` | **STRING** | Sama dengan properti `doseon` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
 | `tanggal_pemeriksaan` | `-` | **STRING** | Tanggal dimana tugas ini diperiksa, format: `YYYY/MM/DD` |
 | `waktu_pemeriksaan_dimulai` | `-`| **STRING** | Waktu dimana tugas ini mulai diperika, format: `HH:MM` |
 | `waktu_pemeriksaan_berakhir` | `-`| **STRING** | Waktu dimana tugas ini mulai selesai diperiksa, format: `HH:MM` |
