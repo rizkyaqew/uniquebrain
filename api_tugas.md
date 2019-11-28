@@ -66,9 +66,8 @@ Berikut adalah penjelasan dari parameter diatas:
    "id": "123456",
    "judul_tugas": "Membuat Tahu dan Tempe",
    "nama_dosen": "Mr. Acep",
-   "tanggal_pemeriksaan": "2019/11/27",
-   "waktu_pemeriksaan_dimulai": "15:30",
-   "waktu_pemeriksaan_berakhir": "15:45",
+   "waktu_pemeriksaan_dimulai": "2019-11-28T15:30:00Z",
+   "waktu_pemeriksaan_berakhir": "2019-11-28T15:35:00Z",
    "banyak_dokumen_diperiksa": 10,
    "banyak_dokumen_terduga": 5,
    "nilai_plagiat_tertinggi": 85,
@@ -141,9 +140,8 @@ Keterangan dan deskripsi dari `property` di dalam struktur `JSON` diatas:
 | `id` | `-` | **STRING** | Sama dengan properti `id` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
 | `judul_tugas` | `-` | **STRING** | Sama dengan properti `judul` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
 | `nama_dosen` | `-` | **STRING** | Sama dengan properti `doseon` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
-| `tanggal_pemeriksaan` | `-` | **STRING** | Tanggal dimana tugas ini diperiksa, format: `YYYY/MM/DD` |
-| `waktu_pemeriksaan_dimulai` | `-`| **STRING** | Waktu dimana tugas ini mulai diperika, format: `HH:MM` |
-| `waktu_pemeriksaan_berakhir` | `-`| **STRING** | Waktu dimana tugas ini mulai selesai diperiksa, format: `HH:MM` |
+| `waktu_pemeriksaan_dimulai` | `-`| **STRING** | Tanggal dan waktu dimana tugas ini mulai diperika, format: (ISO 8601)[https://en.wikipedia.org/wiki/ISO_8601] |
+| `waktu_pemeriksaan_berakhir` | `-`| **STRING** | Tanggal dan waktu dimana tugas ini mulai selesai diperiksa, format: (ISO 8601)[https://en.wikipedia.org/wiki/ISO_8601] |
 | `banyak_dokumen_diperiksa` | `-` | **INTEGER** | Jumlah dokumen yang diterima oleh **UniqueBrain** untuk diperiksa |
 | `banyak_dokumen_terduga` | `-` | **INTEGER** | Jumlah akumulasi dari semua dokumen yang terduga plagiat |
 | `url_laporan_html` | `NULL` | **URL** | Alamat URL lengkap dimana **UniqueBrain** mengupload laporan pemeriksaan tugas ini dan dapat dilihat secara online dalam format **HTML**. Jika parameter `report.upload_html` berupa `NULL` maka `url_laporan_html` akan `NULL` dan tidak ada laporan yang diunggah |
