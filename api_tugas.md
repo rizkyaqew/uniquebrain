@@ -140,8 +140,8 @@ Keterangan dan deskripsi dari `property` di dalam struktur `JSON` diatas:
 | `id` | `-` | **STRING** | Sama dengan properti `id` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
 | `judul_tugas` | `-` | **STRING** | Sama dengan properti `judul` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
 | `nama_dosen` | `-` | **STRING** | Sama dengan properti `doseon` yang [dikirimkan](#input-pemeriksaan) saat request pemeriksaan tugas |
-| `waktu_pemeriksaan_dimulai` | `-`| **STRING** | Tanggal dan waktu dimana tugas ini mulai diperika, format: (ISO-8601)[https://en.wikipedia.org/wiki/ISO_8601] |
-| `waktu_pemeriksaan_berakhir` | `-`| **STRING** | Tanggal dan waktu dimana tugas ini mulai selesai diperiksa, format: (ISO-8601)[https://en.wikipedia.org/wiki/ISO_8601] |
+| `waktu_pemeriksaan_dimulai` | `-`| **STRING** | Tanggal dan waktu dimana tugas ini mulai diperika, format: `ISO-8601` ( https://en.wikipedia.org/wiki/ISO_8601 ) |
+| `waktu_pemeriksaan_berakhir` | `-`| **STRING** | Tanggal dan waktu dimana tugas ini mulai selesai diperiksa, format: `ISO-8601` ( https://en.wikipedia.org/wiki/ISO_8601 ) |
 | `banyak_dokumen_diperiksa` | `-` | **INTEGER** | Jumlah dokumen yang diterima oleh **UniqueBrain** untuk diperiksa |
 | `banyak_dokumen_terduga` | `-` | **INTEGER** | Jumlah akumulasi dari semua dokumen yang terduga plagiat |
 | `url_laporan_html` | `NULL` | **URL** | Alamat URL lengkap dimana **UniqueBrain** mengupload laporan pemeriksaan tugas ini dan dapat dilihat secara online dalam format **HTML**. Jika parameter `report.upload_html` berupa `NULL` maka `url_laporan_html` akan `NULL` dan tidak ada laporan yang diunggah |
